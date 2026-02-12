@@ -2,9 +2,11 @@ import streamlit as st
 from database import init_database
 from utils import load_css
 from init_db import create_placeholder_image, init_sample_data
-from pages.view_items import show as show_view
-from pages.manage_items import show as show_manage
-from pages.admin import show as show_admin
+
+# ✅ เปลี่ยนจาก import show มา import ทั้งโมดูล
+import pages.view_items as view_items
+import pages.manage_items as manage_items
+import pages.admin as admin
 
 st.set_page_config(
     page_title="Item Wiki - ARPG",
@@ -86,8 +88,8 @@ if menu == "🏠 หน้าหลัก":
 
 # ✅ เรียกหน้าที่เลือก
 elif menu == "🔍 ค้นหาไอเท็ม":
-    show_view()
+    view_items.show()
 elif menu == "📝 จัดการไอเท็ม":
-    show_manage()
+    manage_items.show()
 elif menu == "⚙️ ADMIN":
-    show_admin()
+    admin.show()
